@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+    branches: [main]
+    paths: ["**.js"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run unit tests
+        run: |
+          yarn test:unit
